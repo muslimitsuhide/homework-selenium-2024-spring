@@ -1,9 +1,10 @@
 from selenium.webdriver.common.by import By
+from ui.locators.base_page_locators import BasePageLocators
 
 
-class AuthPageLocators:
-    CABINET_LOCATOR = (By.CLASS_NAME, "ButtonCabinet_primary__LCfol")
-    OAUTH_LOCATOR = (By.XPATH, ".//button[@data-test-id='oAuthService_mail_ru']")
-    USERNAME = (By.NAME, "username")
-    PASSWORD = (By.NAME, "password")
-    OAUTH_SUBMIT = (By.CLASS_NAME, "submit-button-wrap")
+class AuthPageLocators(BasePageLocators):
+    MAIL_RU_AUTH_BUTTON = (By.XPATH, "//*[@data-test-id='oAuthService_mail_ru']")
+    MAIL_RU_LOGIN = (By.NAME, 'username')
+    MAIL_RU_PASSWORD = (By.NAME, "password")
+    MAIL_RU_NEXT_BUTTON = (By.XPATH, "//*[@data-test-id='next-button']")
+    MAIL_RU_SUBMIT_BUTTON = (By.XPATH, "//*[@data-test-id='submit-button']")

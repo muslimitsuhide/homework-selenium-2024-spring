@@ -20,7 +20,6 @@ class MainPageLocators(BasePageLocators):
         "//*[contains(@class, 'Footer_leftContent__')]/a[contains(@class, 'ButtonCabinet_primary__')]"
     )
 
-    FOOTER_ABOUT = (By.XPATH, "//*[contains(@class, 'Footer_about__')]")
-
-    SLIDER_TITLE = (By.XPATH, "//*[contains(@class, 'MainSlider_active__')]//p")
-    NONACTIVE_CIRCLE = (By.XPATH, "//*[contains(@class, 'Bullets_box__')]")
+    @staticmethod
+    def NAV_ITEM(item_name):
+        return By.XPATH, f"//*[contains(@class, 'NavigationVKAdsItem_') and text()='{item_name}']"
