@@ -13,6 +13,9 @@ class CenterCommercePage(BasePage):
     
     def choice_learning_modal_page_became_visible(self) -> bool:
         return self.became_visible(self.locators.CHOICE_LEARNING_MODAL)
+    
+    def close_choice_learning_modal_page(self) -> bool:
+        return self.click(self.locators.CHOICE_LEARNING_MODAL_CLOSE_BUTTON)
 
     def close_training_modal(self):
         self.click(self.locators.LEARNING_MODAL_DISMISS_BUTTON)
