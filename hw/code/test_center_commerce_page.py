@@ -6,6 +6,8 @@ from base_case import BaseCase
 from ui.locators.center_commerce_page_locators import CenterCommercePageLocators
 
 class TestCommerceCenter(BaseCase):
+
+    # Главная
     def test_open_catalog_modal(self, center_commerce_page):
         center_commerce_page.close_training_modal()
         center_commerce_page.click_create_catalog_button()
@@ -47,3 +49,30 @@ class TestCommerceCenter(BaseCase):
         )
         
         assert center_commerce_page.close_choice_learning_modal_page(), "Модальное окно создания каталога не закрылось"
+
+    # Новый каталог
+    def test_empty_catalog_name_error(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.input_empty_catalog_name()
+        center_commerce_page.click_submit_button()
+
+        assert center_commerce_page.is_required_field_error_displayed(), "Ошибка 'Обязательное поле' не отображается"
+
+    def test_create_catalog_with_feed(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.select_feed_or_community()
+        center_commerce_page.verify_feed_fields_visible()
+        
+    def test_create_catalog_with_marketplace(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.select_marketplace()
+        center_commerce_page.verify_marketplace_fields_visible()
+
+    '''def test_create_catalog_manually(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.select_manually()
+        center_commerce_page.verify_manually_fields_visible()'''
