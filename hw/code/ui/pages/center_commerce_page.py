@@ -45,7 +45,6 @@ class CenterCommercePage(BasePage):
         except NoSuchElementException:
             return False
 
-    # Ввода пустой строки в поле "Название каталога"
     def input_empty_catalog_name(self):
         input_field = self.find(self.locators.CATALOG_NAME_INPUT)
 
@@ -54,18 +53,27 @@ class CenterCommercePage(BasePage):
         for _ in range(len(current_value)):
             input_field.send_keys(Keys.BACKSPACE)
 
-    # Нажатие на кнопку "Создать каталог"
+    def input_invalid_feed_url(self):
+        input_field = self.find(self.locators.FEED_URL_INPUT)
+
+        input_field.clear()
+        input_field.send_keys("мяу")
+
+    def input_invalid_marketplace_url(self):
+        input_field = self.find(self.locators.MARKETPLACE_URL_INPUT)
+
+        input_field.clear()
+        input_field.send_keys("чипи-чипи чапа-чапа")
+
     def click_submit_button(self):
         self.click(self.locators.SUBMIT_BUTTON)
 
-    # Проверка наличия сообщения об ошибке "Обязательное поле"
     def is_required_field_error_displayed(self):
         return self.is_element_displayed(self.locators.REQUIRED_FIELD_ERROR)
 
     def select_feed_or_community(self):
         self.click(self.locators.CATALOG_SOURCE_TYPE_FEED)
 
-    # Поиск всех необходимых полей 
     def verify_feed_fields_visible(self):
         assert self.find(self.locators.FEED_URL_INPUT).is_displayed(), "Поле 'Ссылка на фид или сообщество' не найдено"
         assert self.find(self.locators.REFRESH_PERIOD_SELECT).is_displayed(), "Поле 'Период обновления' не найдено"
@@ -84,3 +92,4 @@ class CenterCommercePage(BasePage):
         assert self.find(self.locators.FEED_CATEGORY_SELECT).is_displayed(), "Поле 'Категория фида' не найдено"
         assert self.find(self.locators.FEED_FILE_INPUT).is_displayed(), "Поле 'Файл фида' не найдено"
         assert self.find(self.locators.UTM_CHECKBOX).is_displayed(), "Поле 'Автоматически удалять UTM-метки' не найдено"
+        
