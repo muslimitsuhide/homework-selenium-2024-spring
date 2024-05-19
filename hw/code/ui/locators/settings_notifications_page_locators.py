@@ -12,7 +12,6 @@ class SettingsNotificationsPageLocators(BasePageLocators):
     def CHECKBOX_NAME(checkbox):
         return (By.XPATH, f"//*[contains(@class, 'Subscriptions_checkboxContent__') and text()='{checkbox}']")
     
-    # Нужен такой сложный селектор, чтобы нормально отслеживать чекбокс
     @staticmethod
     def CHECKBOX_NAME_IS_CHECKED_OR_NOT(checkbox, state):
         return (By.XPATH, f"//*[contains(@class, 'vkuiCheckbox') and .//* [contains(@class, 'Subscriptions_checkboxContent__') and text()='{checkbox}']]//*[contains(@class, 'vkuiCheckbox__icon--{state}')]")

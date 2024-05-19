@@ -105,6 +105,7 @@ def settings_notifications_page(driver, cabinet_page):
     driver.get(SettingsNotificationsPage.url)
     return SettingsNotificationsPage(driver=driver)
 
+@pytest.fixture
 def guide_page(driver, cabinet_page):
     driver.get(GuidePage.url)
     return GuidePage(driver=driver)

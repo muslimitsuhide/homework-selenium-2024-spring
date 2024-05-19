@@ -3,20 +3,38 @@ from ui.locators.base_page_locators import BasePageLocators
 
 
 class AudiencePageLocators(BasePageLocators):
-    CREATE_AUDIENCE_BUTTON = (By.XPATH, "//button[@data-testid='create-audience']")
+    CREATE_AUDIENCE_BUTTON = (
+        By.XPATH, 
+        "//button[@data-testid='create-audience']"
+    )
     CREATE_AUDIENCE_MODAL_PAGE = (
         By.XPATH,
         "//*[contains(@class, 'ModalSidebarPage_') and child::h2[text()='Создание аудитории']]"
     )
 
-    AUDIENCE_NAME_INPUT = (By.XPATH, "//*[contains(@class, 'vkuiInput__el')]")
+    AUDIENCE_NAME_INPUT = (
+        By.XPATH, 
+        "//*[contains(@class, 'vkuiInput__el')]"
+    )
 
-    SIDEBAR_SIGN = (By.XPATH, "//*[contains(@class, 'vkuiTypography') and text()='Включить пользователей, которые соответствуют']")
-    SIDEBAR_SIGN_HINTS = (By.XPATH, "//*[contains(@class, 'HintSelector_hintSelectorButton__') and text()='хотя бы одному из условий']")
+    SIDEBAR_SIGN = (
+        By.XPATH, 
+        "//*[contains(@class, 'vkuiTypography') and text()='Включить пользователей, которые соответствуют']"
+    )
+    SIDEBAR_SIGN_HINTS = (
+        By.XPATH, 
+        "//*[contains(@class, 'HintSelector_hintSelectorButton__') and text()='хотя бы одному из условий']"
+    )
 
-    ERROR = (By.XPATH, "//*[@role='alert']")
+    ERROR = (
+        By.XPATH, 
+        "//*[@role='alert']"
+    )
 
-    ADD_SOURCE_BUTTON = (By.XPATH, "//*[contains(@class, 'vkuiButton__content') and text()='Добавить источник']")
+    ADD_SOURCE_BUTTON = (
+        By.XPATH, 
+        "//*[contains(@class, 'vkuiButton__content') and text()='Добавить источник']"
+    )
     ADD_SOURCE_MODAL_PAGE = (
         By.XPATH,
         "//*[contains(@class, 'ModalSidebarPage_') and child::h2[text()='Включить источник']]"

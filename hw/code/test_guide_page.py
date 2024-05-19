@@ -68,5 +68,3 @@ class TestGuide(BaseCase):
         )
         assert not guide_page.guide_inner_modal_became_visible(), "Модальное окно 'Каталог товаров' должно быть закрыто после нажатия на крестик"
         assert not guide_page.guide_modal_page_became_visible(), "Модальное окно обучения должно быть закрыто после нажатия на крестик"
-
-    
