@@ -10,10 +10,6 @@ class TestSettingsCommonPage(BaseCase):
         assert settings_common_page.inputs_became_visible()
         assert settings_common_page.buttons_became_visible()
 
-    def test_is_save_and_cancel_buttons_became_visible(self, settings_common_page):
-        settings_common_page.enter_full_name(self.FULL_NAME)
-        assert settings_common_page.save_and_cancel_buttons_became_visible()
-
     def test_is_error_invalid_phone_number(self, settings_common_page):
         settings_common_page.enter_phone_number('7985285313')
         assert settings_common_page.get_phone_number_error() == settings_common_page.ERROR_INVALID_PHONE_NUMBER

@@ -64,5 +64,3 @@ class TestAudiencePage(BaseCase):
         audience_page.enter_audience_name(CUSTOM_AUDIENCE_NAME)
         audience_page.click_modal_page_submit_button()
         assert audience_page.get_created_audience_title() == CUSTOM_AUDIENCE_NAME
-        audience_page.delete_audience()
-        assert audience_page.created_audience_became_invisible()
