@@ -16,10 +16,20 @@ class CenterCommercePageLocators(BasePageLocators):
     CHOICE_LEARNING_MODAL = (By.CLASS_NAME, "vkuiModalPage__content-wrap")
     CHOICE_LEARNING_MODAL_CLOSE_BUTTON = (By.CSS_SELECTOR, "div.vkuiModalDismissButton[aria-label='Закрыть']")
 
-    CATALOG_NAME_INPUT = (By.XPATH, "//input[@data-testid='catalogName-input']")
+    CATALOG_NAME_INPUT = (By.CSS_SELECTOR, 'input[data-testid="catalogName-input"]')
+    REQUIRED_FIELD_ERROR = (By.CSS_SELECTOR, 'span.vkuiTypography.vkuiTypography--normalize.vkuiFormItem__bottom.vkuiFootnote[role="alert"]')
     CATALOG_SOURCE_TYPE_FEED = (By.XPATH, "//div[@data-entityid='url']")
     CATALOG_SOURCE_TYPE_MARKETPLACE = (By.XPATH, "//div[@data-entityid='marketplace']")
     CATALOG_SOURCE_TYPE_FILE = (By.XPATH, "//div[@data-entityid='file']")
+
+    FEED_URL_INPUT = (By.CSS_SELECTOR, 'input[data-testid="catalogUrl-input"]')
+    REFRESH_PERIOD_SELECT = (By.CSS_SELECTOR, 'input[data-testid="catalogPeriod-select"]')
+    UTM_CHECKBOX = (By.XPATH, "//span[text()='Автоматически удалять UTM-метки']")
+
+    MARKETPLACE_URL_INPUT = (By.CSS_SELECTOR, 'input[data-testid="catalogUrl-input"]')
+
+    FEED_CATEGORY_SELECT = (By.XPATH, "//h2[contains(text(),'Категория фида')]/following-sibling::div//input[@role='combobox']")
+    FEED_FILE_INPUT = (By.XPATH, "//h2[contains(text(),'Файл фида')]/following-sibling::div//input[@type='file']")
     
     SUBMIT_BUTTON = (By.XPATH, "//button[@data-testid='submit']")
     CANCEL_BUTTON = (By.XPATH, "//button[@data-testid='cancel']")
