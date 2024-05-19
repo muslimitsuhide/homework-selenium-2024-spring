@@ -11,6 +11,7 @@ from ui.pages.audience_page import AudiencePage
 from ui.pages.settings_common_page import SettingsCommonPage
 from ui.pages.settings_access_page import SettingsAccessPage
 from ui.pages.settings_notifications_page import SettingsNotificationsPage
+from ui.pages.guide_page import GuidePage
 import os
 from dotenv import load_dotenv
 
@@ -89,7 +90,6 @@ def audience_page(driver, cabinet_page):
     driver.get(AudiencePage.url)
     return AudiencePage(driver=driver)
 
-
 @pytest.fixture
 def settings_common_page(driver, cabinet_page):
     driver.get(SettingsCommonPage.url)
@@ -104,3 +104,7 @@ def settings_access_page(driver, cabinet_page):
 def settings_notifications_page(driver, cabinet_page):
     driver.get(SettingsNotificationsPage.url)
     return SettingsNotificationsPage(driver=driver)
+
+def guide_page(driver, cabinet_page):
+    driver.get(GuidePage.url)
+    return GuidePage(driver=driver)
