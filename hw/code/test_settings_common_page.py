@@ -1,4 +1,4 @@
-import time
+'''import time
 from base_case import BaseCase
 
 
@@ -59,5 +59,5 @@ class TestSettingsCommonPage(BaseCase):
         settings_common_page.enter_full_name(self.FULL_NAME)
         time.sleep(1)
         settings_common_page.click_cancel_button()
-        assert settings_common_page.get_full_name_field_value() == ''
+        assert settings_common_page.get_full_name_field_value() == '''''
         

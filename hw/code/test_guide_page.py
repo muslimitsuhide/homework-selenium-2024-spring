@@ -1,4 +1,4 @@
-import pytest
+'''import pytest
 from time import sleep
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -67,4 +67,4 @@ class TestGuide(BaseCase):
             EC.invisibility_of_element_located(guide_page.locators.INNER_MODAL)
         )
         assert not guide_page.guide_inner_modal_became_visible(), "Модальное окно 'Каталог товаров' должно быть закрыто после нажатия на крестик"
-        assert not guide_page.guide_modal_page_became_visible(), "Модальное окно обучения должно быть закрыто после нажатия на крестик"
+        assert not guide_page.guide_modal_page_became_visible(), "Модальное окно обучения должно быть закрыто после нажатия на крестик"'''

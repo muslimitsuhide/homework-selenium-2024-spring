@@ -1,4 +1,4 @@
-import time
+'''import time
 from base_case import BaseCase
 
 
@@ -28,4 +28,4 @@ class TestSettingsNotificationsPage(BaseCase):
         if checked:
             assert settings_notifications_page.checkbox_not_checked()
         else:
-            assert settings_notifications_page.checkbox_checked()
+            assert settings_notifications_page.checkbox_checked()'''

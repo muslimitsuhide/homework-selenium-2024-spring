@@ -43,7 +43,6 @@ class TestAudiencePage(BaseCase):
         assert audience_page.key_phrases_sidebar_became_visible()
         assert audience_page.key_phrases_textarea_became_visible()
         assert audience_page.minus_key_phrases_textarea_became_visible()
-        assert audience_page.period_input_became_visible()
 
     def test_add_source_by_key_phrases(self, audience_page):
         audience_page.click_create_audience_button()

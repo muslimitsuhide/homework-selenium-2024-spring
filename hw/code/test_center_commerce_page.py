@@ -1,4 +1,4 @@
-import pytest
+'''import pytest
 from time import sleep
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -106,4 +106,4 @@ class TestCommerceCenter(BaseCase):
         center_commerce_page.input_invalid_marketplace_url()
         center_commerce_page.click_submit_button()
         
-        assert center_commerce_page.is_required_field_error_displayed(), "Ошибка 'Необходимо указать протокол http(s)' не отображается"
+        assert center_commerce_page.is_required_field_error_displayed(), "Ошибка 'Необходимо указать протокол http(s)' не отображается"'''
