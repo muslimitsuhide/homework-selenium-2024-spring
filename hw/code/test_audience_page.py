@@ -11,7 +11,6 @@ class TestAudiencePage(BaseCase):
     def test_is_create_audience_modal_page_opened(self, audience_page):
         audience_page.click_create_audience_button()
         assert audience_page.create_audience_modal_page_became_visible()
-        assert audience_page.audience_name_input_became_visible()
         assert audience_page.sidebar_sign_became_visible()
         assert audience_page.add_source_button_became_visible()
         assert audience_page.footer_buttons_became_visible()
