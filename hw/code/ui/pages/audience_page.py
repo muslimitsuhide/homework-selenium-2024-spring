@@ -1,0 +1,60 @@
+from ui.pages.base_page import BasePage
+from ui.locators.audience_page_locators import AudiencePageLocators
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+class AudiencePage(BasePage):
+    url = 'https://ads.vk.com/hq/audience'
+    locators = AudiencePageLocators()
+    
+    def click_audience_create_button(self):
+        self.click(self.locators.AUDIENCE_CREATE_BUTTON)
+
+    def audience_modal_became_visible(self) -> bool:
+        return self.became_visible(self.locators.AUDIENCE_CREATE_MODAL)
+    
+    def click_audience_add_source_button(self):
+        self.click(self.locators.AUDIENCE_ADD_SOURCE_BUTTON)
+
+    def audience_add_source_modal_became_visible(self) -> bool:
+        return self.became_visible(self.locators.AUDIENCE_SOURCE_MODAL)
+    
+    def click_audience_source_phrase_button(self):
+        self.click(self.locators.AUDIENCE_SOURCE_PHRASE_BUTTON)
+    
+    def enter_source_name(self, str):
+        musician_input = self.find(self.locators.AUDIENCE_SOURCE_NAME_INPUT)
+        musician_input.send_keys(str)
+        
+    def enter_phrase_name(self, str):
+        musician_input = self.find(self.locators.AUDIENCE_SOURCE_PHRASE_INPUT)
+        musician_input.send_keys(str)
+        
+    def click_save_phrase_button(self):
+        self.click(self.locators.SAVE_PHRASE_BUTTON)
+        
+    def click_save_button0(self):
+        self.click(self.locators.SAVE_BUTTON_0)
+        
+    def click_save_button1(self):
+        self.click(self.locators.SAVE_BUTTON_1)
+        
+    def click_save_button2(self):
+        self.click(self.locators.SAVE_BUTTON_2)
+        
+    def click_save_button3(self):
+        self.click(self.locators.SAVE_BUTTON_3)
+        
+
+    def audience_item_became_visible(self) -> bool:
+        return self.became_visible(self.locators.AUDIENCE_ITEM)
+
+    def hover_and_click_delete(self):
+        audience_menu = self.find(self.locators.AUDIENCE_MENU)
+        ActionChains(self.driver).move_to_element(audience_menu).perform()
+        delete_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(self.locators.DELETE_BUTTON)
+        )
+        delete_button.click()

@@ -8,6 +8,7 @@ from ui.pages.registration_page import RegistrationPage
 from ui.pages.cabinet_page import CabinetPage
 from ui.pages.center_commerce_page import CenterCommercePage
 from ui.pages.guide_page import GuidePage
+from ui.pages.audience_page import AudiencePage
 import os
 from dotenv import load_dotenv
 
@@ -85,3 +86,8 @@ def center_commerce_page(driver, cabinet_page):
 def guide_page(driver, cabinet_page):
     driver.get(GuidePage.url)
     return GuidePage(driver=driver)
+
+@pytest.fixture
+def audience_page(driver, cabinet_page):
+    driver.get(AudiencePage.url)
+    return AudiencePage(driver=driver)
