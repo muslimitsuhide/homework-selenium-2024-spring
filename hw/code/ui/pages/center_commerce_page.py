@@ -74,22 +74,30 @@ class CenterCommercePage(BasePage):
     def select_feed_or_community(self):
         self.click(self.locators.CATALOG_SOURCE_TYPE_FEED)
 
-    def verify_feed_fields_visible(self):
-        assert self.find(self.locators.FEED_URL_INPUT).is_displayed(), "Поле 'Ссылка на фид или сообщество' не найдено"
-        assert self.find(self.locators.REFRESH_PERIOD_SELECT).is_displayed(), "Поле 'Период обновления' не найдено"
-        assert self.find(self.locators.UTM_CHECKBOX).is_displayed(), "Поле 'Автоматически удалять UTM-метки' не найдено"
+    def field_feed_displayed(self):
+        return self.is_element_displayed(self.locators.FEED_URL_INPUT)
+
+    def field_period_displayed(self):
+        return self.is_element_displayed(self.locators.REFRESH_PERIOD_SELECT)
+    
+    def field_utm_displayed(self):
+        return self.is_element_displayed(self.locators.UTM_CHECKBOX)
 
     def select_marketplace(self):
         self.click(self.locators.CATALOG_SOURCE_TYPE_MARKETPLACE)
 
     def verify_marketplace_fields_visible(self):
-        assert self.find(self.locators.MARKETPLACE_URL_INPUT).is_displayed(), "Поле 'Ссылка на страницу продавца' не найдено"
+        return self.is_element_displayed(self.locators.MARKETPLACE_URL_INPUT)
 
     def select_manually(self):
         self.click(self.locators.CATALOG_SOURCE_TYPE_FILE)
 
-    def verify_manually_fields_visible(self):
-        assert self.find(self.locators.FEED_CATEGORY_SELECT).is_displayed(), "Поле 'Категория фида' не найдено"
-        assert self.find(self.locators.FEED_FILE_INPUT).is_displayed(), "Поле 'Файл фида' не найдено"
-        assert self.find(self.locators.UTM_CHECKBOX).is_displayed(), "Поле 'Автоматически удалять UTM-метки' не найдено"
+    def field_category_visible(self):
+        return self.is_element_displayed(self.locators.FEED_CATEGORY_SELECT)
+
+    def field_category_displayed(self):
+        return self.is_element_displayed(self.locators.FEED_CATEGORY_SELECT)
+
+    def field_feed_file_displayed(self):
+        return self.is_element_displayed(self.locators.FEED_FILE_INPUT)
         
