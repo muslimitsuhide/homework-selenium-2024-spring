@@ -8,7 +8,7 @@ KEY_PHRASES = ["buiseness", "tasks"]
 
 
 class TestAudiencePage(BaseCase):
-    def test_is_create_audience_modal_page_opened(self, audience_page):
+    def test_create_audience_modal_page_opened(self, audience_page):
         audience_page.click_create_audience_button()
         assert audience_page.create_audience_modal_page_became_visible()
         assert audience_page.audience_name_input_became_visible()
@@ -17,7 +17,7 @@ class TestAudiencePage(BaseCase):
         assert audience_page.footer_buttons_became_visible()
         assert audience_page.cross_button_became_visible()
 
-    def test_is_create_audience_modal_page_closed(self, audience_page):
+    def test_create_audience_modal_page_closed(self, audience_page):
         audience_page.click_create_audience_button()
         audience_page.click_cross_button()
         assert audience_page.create_audience_modal_page_became_invisible()
@@ -30,13 +30,13 @@ class TestAudiencePage(BaseCase):
         audience_page.enter_audience_name('a' * (audience_page.MAX_LENGTH_OF_AUDIENCE_NAME + 1))
         assert audience_page.get_error() == audience_page.ERROR_TOO_LONG_AUDIENCE_NAME
 
-    def test_is_add_source_modal_page_became_visible(self, audience_page):
+    def test_add_source_modal_page_became_visible(self, audience_page):
         audience_page.click_create_audience_button()
         audience_page.click_add_source_button()
         assert audience_page.add_source_modal_page_became_visible()
         assert audience_page.source_items_became_visible()
 
-    def test_is_key_phrases_modal_page_became_visible(self, audience_page):
+    def test_key_phrases_modal_page_became_visible(self, audience_page):
         audience_page.click_create_audience_button()
         audience_page.click_add_source_button()
         audience_page.select_source(SOURCE_NAME)

@@ -98,9 +98,6 @@ class AudiencePage(BasePage):
         return self.find(self.locators.CREATED_AUDIENCE_TITLE, timeout=10).text
     
     def delete_audience(self):
-        self.hover(self.locators.CREATED_AUDIENCE_TITLE, timeout=10)
-        self.hover(self.locators.MORE_BUTTON)
-        self.hover(self.locators.DELETE)
         self.click(self.locators.DELETE)
         self.click(self.locators.DELETE_MODAL_BUTTON)
 
