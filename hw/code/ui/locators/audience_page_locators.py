@@ -20,5 +20,3 @@ class AudiencePageLocators(BasePageLocators):
 
     AUDIENCE_MENU = (By.CLASS_NAME, "NameCell_details__WyuPr")
     DELETE_BUTTON = (By.XPATH, "(//*[text()='Удалить'])[1]")
-
-

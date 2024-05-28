@@ -58,3 +58,5 @@ class AudiencePage(BasePage):
             EC.element_to_be_clickable(self.locators.DELETE_BUTTON)
         )
         delete_button.click()
+    
+   

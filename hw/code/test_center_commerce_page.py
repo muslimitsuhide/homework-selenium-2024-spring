@@ -47,3 +47,70 @@ class TestCommerceCenter(BaseCase):
         )
         
         assert center_commerce_page.close_choice_learning_modal_page(), "Модальное окно создания каталога не закрылось"
+
+    def test_empty_catalog_name_error(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.input_empty_catalog_name()
+        center_commerce_page.click_submit_button()
+
+        assert center_commerce_page.is_required_field_error_displayed(), "Ошибка 'Обязательное поле' не отображается"
+
+    def test_create_catalog_with_feed(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.select_feed_or_community()
+        
+        assert center_commerce_page.field_feed_displayed(), "Поле 'Ссылка на фид или сообщество' не найдено"
+        assert center_commerce_page.field_period_displayed(), "Поле 'Период обновления' не найдено"
+        assert center_commerce_page.field_utm_displayed(), "Поле 'Автоматически удалять UTM-метки' не найдено"
+        
+    def test_create_catalog_with_marketplace(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.select_marketplace()
+
+        assert center_commerce_page.verify_marketplace_fields_visible(), "Поле 'Ссылка на страницу продавца' не найдено"
+
+    def test_create_catalog_manually(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.select_manually()
+        
+        assert center_commerce_page.field_category_displayed(), "Поле 'Категория фида' не найдено"
+        assert center_commerce_page.field_feed_file_displayed(), "Поле 'Файл фида' не найдено"
+        assert center_commerce_page.field_utm_displayed(), "Поле 'Автоматически удалять UTM-метки' не найдено"
+
+    def test_empty_feed_url(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.select_feed_or_community()
+        center_commerce_page.click_submit_button()
+        
+        assert center_commerce_page.is_required_field_error_displayed(), "Ошибка 'Обязательное поле' не отображается"
+
+    def test_invalid_feed_url(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.select_feed_or_community()
+        center_commerce_page.input_invalid_feed_url()
+        center_commerce_page.click_submit_button()
+        
+        assert center_commerce_page.is_required_field_error_displayed(), "Ошибка 'Необходимо указать протокол http(s)' не отображается"
+
+    def test_empty_marketplace_url(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.select_marketplace()
+        center_commerce_page.click_submit_button()
+        
+        assert center_commerce_page.is_required_field_error_displayed(), "Ошибка 'Обязательное поле' не отображается"
+
+    def test_invalid_marketplace_url(self, center_commerce_page):
+        center_commerce_page.close_training_modal()
+        center_commerce_page.click_create_catalog_button()
+        center_commerce_page.select_marketplace()
+        center_commerce_page.input_invalid_marketplace_url()
+        center_commerce_page.click_submit_button()
+        
+        assert center_commerce_page.is_required_field_error_displayed(), "Ошибка 'Необходимо указать протокол http(s)' не отображается"
