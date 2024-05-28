@@ -60,4 +60,3 @@ class TestSettingsCommonPage(BaseCase):
         time.sleep(1)
         settings_common_page.click_cancel_button()
         assert settings_common_page.get_full_name_field_value() == ''
-        
