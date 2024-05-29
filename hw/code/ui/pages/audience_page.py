@@ -1,17 +1,37 @@
 from ui.pages.base_page import BasePage
+from selenium.webdriver import Keys
 from ui.locators.audience_page_locators import AudiencePageLocators
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 
 
 class AudiencePage(BasePage):
     url = 'https://ads.vk.com/hq/audience'
     locators = AudiencePageLocators()
-    
+
+    SOURCE_TYPE_LIST = ['Существующая аудитория', 'Список пользователей', 'Ключевые фразы', 'События в рекламной кампании', 'События в мобильном приложении', 'События в лид-форме', 'События на сайте', 'Подписчики сообществ', 'Музыканты']
+    ERROR_TOO_LONG_AUDIENCE_NAME = 'Максимальная длина 255 символов'
+
     def cross_button_became_visible(self):
         return self.became_visible(self.locators.CROSS_BUTTON)
     
+    def create_audience_modal_page_became_visible(self) -> bool:
+        return self.became_visible(self.locators.CREATE_AUDIENCE_MODAL_PAGE, timeout=1)
+    
+    def create_audience_modal_page_became_invisible(self) -> bool:
+        return self.became_invisible(self.locators.CREATE_AUDIENCE_MODAL_PAGE, timeout=1)
+
+    def audience_name_input_became_visible(self):
+        return self.became_visible(self.locators.AUDIENCE_NAME_INPUT)
+
+    def add_source_button_became_visible(self):
+        return self.became_visible(self.locators.ADD_SOURCE_BUTTON)
+
+    def footer_buttons_became_visible(self):
+        return self.became_visible(self.locators.CANCEL_BUTTON) and self.became_visible(self.locators.SUBMIT_BUTTON)
+
     def click_cross_button(self):
         self.click(self.locators.CROSS_BUTTON, timeout=1)
 
@@ -48,6 +68,9 @@ class AudiencePage(BasePage):
     def minus_key_phrases_textarea_became_visible(self):
         return self.became_visible(self.locators.MINUS_PHRASES_INPUT)
     
+    def sidebar_sign_became_visible(self):
+        return self.became_visible(self.locators.SIDEBAR_SIGN) and self.became_visible(self.locators.SIDEBAR_SIGN_HINTS)
+
     def period_input_became_visible(self):
         return self.became_visible(self.locators.PERIOD_INPUT)
 
@@ -78,8 +101,8 @@ class AudiencePage(BasePage):
     def created_audience_became_invisible(self):
         return self.became_invisible(self.locators.CREATED_AUDIENCE_TITLE)
     
-    def click_audience_create_button(self):
-        self.click(self.locators.AUDIENCE_CREATE_BUTTON)
+    def click_create_audience_button(self):
+        self.click(self.locators.CREATE_AUDIENCE_BUTTON)
 
     def audience_modal_became_visible(self) -> bool:
         return self.became_visible(self.locators.AUDIENCE_CREATE_MODAL)
@@ -116,14 +139,5 @@ class AudiencePage(BasePage):
     def click_save_button3(self):
         self.click(self.locators.SAVE_BUTTON_3)
         
-
     def audience_item_became_visible(self) -> bool:
         return self.became_visible(self.locators.AUDIENCE_ITEM)
-
-    def hover_and_click_delete(self):
-        audience_menu = self.find(self.locators.AUDIENCE_MENU)
-        ActionChains(self.driver).move_to_element(audience_menu).perform()
-        delete_button = WebDriverWait(self.driver, 10).until(
-            EC.element_to_be_clickable(self.locators.DELETE_BUTTON)
-        )
-        delete_button.click()
