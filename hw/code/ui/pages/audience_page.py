@@ -9,6 +9,75 @@ class AudiencePage(BasePage):
     url = 'https://ads.vk.com/hq/audience'
     locators = AudiencePageLocators()
     
+    def cross_button_became_visible(self):
+        return self.became_visible(self.locators.CROSS_BUTTON)
+    
+    def click_cross_button(self):
+        self.click(self.locators.CROSS_BUTTON, timeout=1)
+
+    def click_cancel_button(self):
+        self.click(self.locators.CANCEL_BUTTON, timeout=1)
+
+    def enter_audience_name(self, audience_name: str):
+        elem = self.find(self.locators.AUDIENCE_NAME_INPUT)
+        elem.clear()
+        elem.send_keys(audience_name)
+        elem.send_keys(Keys.ENTER)
+
+    def get_error(self) -> str:
+        return self.find(self.locators.ERROR).text
+
+    def click_add_source_button(self):
+        self.click(self.locators.ADD_SOURCE_BUTTON)
+
+    def add_source_modal_page_became_visible(self) -> bool:
+        return self.became_visible(self.locators.ADD_SOURCE_MODAL_PAGE)
+    
+    def source_items_became_visible(self):
+        for s in self.SOURCE_TYPE_LIST:
+            if not self.became_visible(self.locators.SOURCE_ITEM(s)):
+                return False
+        return True
+    
+    def key_phrases_sidebar_became_visible(self):
+        return self.became_visible(self.locators.KEY_PHRASES_MODAL_PAGE)
+    
+    def key_phrases_textarea_became_visible(self):
+        return self.became_visible(self.locators.KEY_PHRASES_INPUT)
+    
+    def minus_key_phrases_textarea_became_visible(self):
+        return self.became_visible(self.locators.MINUS_PHRASES_INPUT)
+    
+    def period_input_became_visible(self):
+        return self.became_visible(self.locators.PERIOD_INPUT)
+
+    def select_source(self, source_name):
+        self.click(self.locators.SOURCE_ITEM(source_name))
+
+    def enter_key_phrases(self, key_phrases: list):
+        key_phrases_input = self.find(self.locators.KEY_PHRASES_INPUT)
+        key_phrases_input.clear()
+        key_phrases_input.send_keys(' '.join(key_phrases))
+
+    def click_modal_page_submit_button(self):
+        try:
+            self.click(self.locators.MODAL_PAGE_SUBMIT_BUTTON, timeout=5)
+        except TimeoutException:
+            pass
+
+    def get_source_card_content(self) -> str:
+        return self.find(self.locators.SOURCE_CARD_CONTENT).text
+
+    def get_created_audience_title(self) -> str:
+        return self.find(self.locators.CREATED_AUDIENCE_TITLE, timeout=10).text
+    
+    def delete_audience(self):
+        self.click(self.locators.DELETE)
+        self.click(self.locators.DELETE_MODAL_BUTTON)
+
+    def created_audience_became_invisible(self):
+        return self.became_invisible(self.locators.CREATED_AUDIENCE_TITLE)
+    
     def click_audience_create_button(self):
         self.click(self.locators.AUDIENCE_CREATE_BUTTON)
 
@@ -58,5 +127,3 @@ class AudiencePage(BasePage):
             EC.element_to_be_clickable(self.locators.DELETE_BUTTON)
         )
         delete_button.click()
-    
-   
