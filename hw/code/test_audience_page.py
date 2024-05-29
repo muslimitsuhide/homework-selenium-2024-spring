@@ -9,6 +9,30 @@ KEY_PHRASES = ["buiseness", "tasks"]
 
 
 class TestAudiencePage(BaseCase):
+    def test_creating_audience(self, audience_page):
+        audience_page.click_audience_create_button()
+        WebDriverWait(audience_page.driver, 10).until(
+            EC.visibility_of_element_located(audience_page.locators.AUDIENCE_CREATE_MODAL)
+        )
+        assert audience_page.audience_modal_became_visible(), "Модальное окно не открылось"
+
+        audience_page.click_audience_add_source_button()
+        assert audience_page.audience_add_source_modal_became_visible(), "Модальное окно не открылось"
+        
+        audience_page.click_audience_source_phrase_button()
+        audience_page.enter_source_name("as")        
+        audience_page.enter_phrase_name("as")    
+
+        audience_page.click_save_phrase_button()        
+        audience_page.click_save_button1()      
+        
+        WebDriverWait(audience_page.driver, 10).until(
+            EC.visibility_of_element_located(audience_page.locators.AUDIENCE_ITEM)
+        )
+        assert audience_page.audience_item_became_visible(), "Элемент аудитории не появился на странице"
+  
+        audience_page.hover_and_click_delete()
+
     def test_create_audience_modal_page_opened(self, audience_page):
         audience_page.click_create_audience_button()
         assert audience_page.create_audience_modal_page_became_visible()
@@ -65,27 +89,3 @@ class TestAudiencePage(BaseCase):
         audience_page.enter_audience_name(CUSTOM_AUDIENCE_NAME)
         audience_page.click_modal_page_submit_button()
         assert audience_page.get_created_audience_title() == CUSTOM_AUDIENCE_NAME
-
-    def test_creating_audience(self, audience_page):
-        audience_page.click_audience_create_button()
-        WebDriverWait(audience_page.driver, 10).until(
-            EC.visibility_of_element_located(audience_page.locators.AUDIENCE_CREATE_MODAL)
-        )
-        assert audience_page.audience_modal_became_visible(), "Модальное окно не открылось"
-
-        audience_page.click_audience_add_source_button()
-        assert audience_page.audience_add_source_modal_became_visible(), "Модальное окно не открылось"
-        
-        audience_page.click_audience_source_phrase_button()
-        audience_page.enter_source_name("as")        
-        audience_page.enter_phrase_name("as")    
-
-        audience_page.click_save_phrase_button()        
-        audience_page.click_save_button1()      
-        
-        WebDriverWait(audience_page.driver, 10).until(
-            EC.visibility_of_element_located(audience_page.locators.AUDIENCE_ITEM)
-        )
-        assert audience_page.audience_item_became_visible(), "Элемент аудитории не появился на странице"
-  
-        audience_page.hover_and_click_delete()
