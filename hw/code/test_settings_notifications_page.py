@@ -22,7 +22,6 @@ class TestSettingsNotificationsPage(BaseCase):
 
     def test_is_on_save_click_checkbox_saved(self, settings_notifications_page):
         checked = settings_notifications_page.checkbox_checked()
-        print(checked)
         settings_notifications_page.click_checkbox()
         settings_notifications_page.click_save()
 
