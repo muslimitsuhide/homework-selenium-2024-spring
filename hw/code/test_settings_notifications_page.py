@@ -3,7 +3,7 @@ from base_case import BaseCase
 
 
 class TestSettingsNotificationsPage(BaseCase):
-    def test_is_h2_became_visible(self, settings_notifications_page):
+    def test_h2_became_visible(self, settings_notifications_page):
         assert settings_notifications_page.h2_became_visible()
         assert settings_notifications_page.checkbox_became_visible()
         assert settings_notifications_page.switch_email_became_visible()
