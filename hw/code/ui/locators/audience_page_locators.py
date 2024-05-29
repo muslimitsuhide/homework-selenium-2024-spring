@@ -13,7 +13,9 @@ class AudiencePageLocators(BasePageLocators):
     AUDIENCE_SOURCE_PHRASE_INPUT = (By.XPATH, "//*[@placeholder='Введите фразу и нажмите Enter']")
 
     SAVE_PHRASE_BUTTON = (By.XPATH, "(//*[text()='Сохранить'])[2]")
+    SAVE_BUTTON_0 = (By.XPATH, "(//*[text()='Сохранить'])[0]")
     SAVE_BUTTON_1 = (By.XPATH, "(//*[text()='Сохранить'])[1]")
+    SAVE_BUTTON_2 = (By.XPATH, "(//*[text()='Сохранить'])[2]")
     SAVE_BUTTON_3 = (By.XPATH, "(//*[text()='Сохранить'])[3]")
 
     AUDIENCE_ITEM = (By.CLASS_NAME, "NameCell_wrapper__hxqrL")
