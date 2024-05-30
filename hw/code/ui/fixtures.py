@@ -13,7 +13,7 @@ from ui.pages.settings_access_page import SettingsAccessPage
 from ui.pages.settings_notifications_page import SettingsNotificationsPage
 from ui.pages.create_company_page import CreateCompanyPage
 from ui.pages.guide_page import GuidePage
-from ui.pages.audience_page import AudiencePage
+from ui.pages.surveys_page import SurveysPage
 import os
 from dotenv import load_dotenv
 
@@ -88,11 +88,6 @@ def center_commerce_page(driver, cabinet_page):
     return CenterCommercePage(driver=driver)
 
 @pytest.fixture
-def audience_page(driver, cabinet_page):
-    driver.get(AudiencePage.url)
-    return AudiencePage(driver=driver)
-
-@pytest.fixture
 def settings_common_page(driver, cabinet_page):
     driver.get(SettingsCommonPage.url)
     return SettingsCommonPage(driver=driver)
@@ -121,3 +116,13 @@ def audience_page(driver, cabinet_page):
 def create_company_page(driver, cabinet_page):
     driver.get(CreateCompanyPage.url)
     return CreateCompanyPage(driver=driver)
+
+@pytest.fixture
+def create_company_page(driver, cabinet_page):
+    driver.get(CreateCompanyPage.url)
+    return CreateCompanyPage(driver=driver)
+
+@pytest.fixture
+def surveys_page(driver, cabinet_page):
+    driver.get(SurveysPage.url)
+    return SurveysPage(driver=driver)
