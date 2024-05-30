@@ -53,6 +53,9 @@ class AudiencePage(BasePage):
     def add_source_modal_page_became_visible(self) -> bool:
         return self.became_visible(self.locators.ADD_SOURCE_MODAL_PAGE)
     
+    def add_source_modal_page_became_invisible(self) -> bool:
+        return self.became_invisible(self.locators.ADD_SOURCE_MODAL_PAGE)
+    
     def source_items_became_visible(self):
         for s in self.SOURCE_TYPE_LIST:
             if not self.became_visible(self.locators.SOURCE_ITEM(s)):
@@ -141,3 +144,30 @@ class AudiencePage(BasePage):
         
     def audience_item_became_visible(self) -> bool:
         return self.became_visible(self.locators.AUDIENCE_ITEM)
+
+    def click_cancel_source_button(self):
+        self.click(self.locators.CANCEL_SOURCE_BUTTON, timeout=1)
+
+    def hover_and_click_delete(self):
+        audience_menu = self.find(self.locators.AUDIENCE_MENU)
+        ActionChains(self.driver).move_to_element(audience_menu).perform()
+        delete_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(self.locators.DELETE_BUTTON)
+        )
+        delete_button.click()
+    
+    def audience_item_became_invisible(self) -> bool:
+        return self.became_invisible(self.locators.AUDIENCE_ITEM)
+    
+    def click_delete_confirm_button(self): 
+        self.click(self.locators.DELETE_CONFIRM_BUTTON, timeout=2)
+    
+    def delete_confirm_modal_became_visible(self) -> bool:
+        return self.became_visible(self.locators.DELETE_CONFIRM_MODAL)
+    
+    def seach_audience_by_name(self, audience_name: str):
+        elem = self.find(self.locators.SEARCH_INPUT)
+        # elem.clear()
+        self.driver.execute_script("arguments[0].value = '';", elem)
+        elem.send_keys(audience_name)
+        elem.send_keys(Keys.ENTER)
