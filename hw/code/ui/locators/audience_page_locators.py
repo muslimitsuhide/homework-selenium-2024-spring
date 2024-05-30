@@ -67,9 +67,7 @@ class AudiencePageLocators(BasePageLocators):
 
     SAVE_PHRASE_BUTTON = (By.XPATH, "(//*[text()='Сохранить'])[2]")
     SAVE_BUTTON_0 = (By.XPATH, "(//*[text()='Сохранить'])[0]")
-    SAVE_BUTTON_1 = (By.XPATH, "(//*[text()='Сохранить'])[1]")
     SAVE_BUTTON_2 = (By.XPATH, "(//*[text()='Сохранить'])[2]")
-    SAVE_BUTTON_3 = (By.XPATH, "(//*[text()='Сохранить'])[3]")
 
     MODAL_PAGE_SUBMIT_BUTTON = (By.XPATH, "//*[contains(@class, 'vkuiTappable--hasActive') and @type='submit']")
     CREATED_AUDIENCE_TITLE = (By.XPATH, "//*[contains(@class, 'NameCell_wrapper__')]/h5")
@@ -77,3 +75,9 @@ class AudiencePageLocators(BasePageLocators):
 
     AUDIENCE_MENU = (By.CLASS_NAME, "NameCell_details__WyuPr")
     DELETE_BUTTON = (By.XPATH, "(//*[text()='Удалить'])[1]")
+
+    CANCEL_SOURCE_BUTTON = (By.XPATH, "(//button[@data-testid='cancel'])[2]")
+    DELETE_CONFIRM_BUTTON = (By.XPATH, "(//*[text()='Удалить'])")
+    DELETE_CONFIRM_MODAL = (By.XPATH, "(//*[text()='Удалить аудиторию?'])")
+
+    SEARCH_INPUT = (By.XPATH, "//input[@placeholder='Поиск']")
